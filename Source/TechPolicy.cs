@@ -132,7 +132,8 @@ namespace EraAppropriateThreats
             if (threatSources.TryGetValue(incident.defName, out ThreatSourceDef? source))
             {
                 FactionDef? faction = DefDatabase<FactionDef>.GetNamedSilentFail(source.faction);
-                return faction != null ? Eligible(faction) : LevelInRange(source.techLevel);
+                if (source.techLevel == TechLevel.Undefined) return faction == null || Eligible(faction);
+                return (faction == null || RuleFor(faction) != FactionRule.Never) && LevelInRange(source.techLevel);
             }
             FactionDef? owner = IncidentOwner(incident);
             return owner == null || Eligible(owner);

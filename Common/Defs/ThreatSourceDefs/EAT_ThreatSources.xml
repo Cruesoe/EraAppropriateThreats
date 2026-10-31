@@ -16,4 +16,51 @@
     <incident>ProtectionFeeLTS</incident>
     <techLevel>Industrial</techLevel>
   </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VREArchonPsychicStorm</defName>
+    <incident>VREA_PsychicStorm</incident>
+    <faction>VRE_Archons</faction>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_AABlackHive</defName>
+    <incident>AA_Incident_BlackHive</incident>
+    <faction>AA_BlackHive</faction>
+    <techLevel>Spacer</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFEIInfestedChunkCrash</defName>
+    <incident>VFEI_InfestedChunkCrash</incident>
+    <faction>Insect</faction>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFEIInfestedPartCrash</defName>
+    <incident>VFEI_InfestedPartCrash</incident>
+    <faction>Insect</faction>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFEIInfestedModuleCrash</defName>
+    <incident>VFEI_InfestedModuleCrash</incident>
+    <faction>Insect</faction>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFEIRoamingInsectoids</defName>
+    <incident>VFEI_RoamingInsectoids</incident>
+    <faction>Insect</faction>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFEILargeInfestation</defName>
+    <incident>VFEI_LargeInfestation</incident>
+    <faction>Insect</faction>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFEIBurrowSiege</defName>
+    <incident>VFEI_BurrowSiege</incident>
+    <faction>Insect</faction>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
 </Defs>

@@ -3,7 +3,7 @@ using Verse;
 
 namespace EraAppropriateThreats
 {
-    // Ties a threat event that chooses its own faction to a faction's rule, or to a tech level when no one faction fits
+    // Ties a threat event to a faction's rule, a tech level, or both: with both, Never blocks it and otherwise the tech level decides
     public class ThreatSourceDef : Def
     {
         public string incident = "";
