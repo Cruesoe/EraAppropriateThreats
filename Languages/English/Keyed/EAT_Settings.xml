@@ -23,13 +23,14 @@
   <EAT_Any>any</EAT_Any>
 
   <EAT_FilterRaids>Limit raids</EAT_FilterRaids>
-  <EAT_FilterRaidsTip>Random raids come from a faction in range.</EAT_FilterRaidsTip>
+  <EAT_FilterRaidsTip>Random raids come from a faction in range. This also covers Rim War, Winston Waves and [SR]Raid Extension.</EAT_FilterRaidsTip>
+  <EAT_RequiresLimitRaids>Requires Limit raids.</EAT_RequiresLimitRaids>
   <EAT_KeepRaids>Keep raids when no faction is in range</EAT_KeepRaids>
   <EAT_KeepRaidsTip>When no faction in range can raid you, the closest faction comes instead. Turn this off to skip the raid. Factions set to Never are never used.</EAT_KeepRaidsTip>
   <EAT_OutOfRangeChance>Chance a raid ignores the limit: {0}</EAT_OutOfRangeChance>
   <EAT_OutOfRangeChanceTip>Lets the occasional raid come from outside the range. Factions set to Never are never used.</EAT_OutOfRangeChanceTip>
   <EAT_FilterIncidents>Limit mech clusters, crashed ship parts and infestations</EAT_FilterIncidents>
-  <EAT_FilterIncidentsTip>These follow the rule for mechanoids or insects in the list below.</EAT_FilterIncidentsTip>
+  <EAT_FilterIncidentsTip>These follow the rule for mechanoids or insects in the list below. Threat events from supported mods are limited too.</EAT_FilterIncidentsTip>
   <EAT_FilterQuestSites>Limit hostile quest sites</EAT_FilterQuestSites>
   <EAT_FilterQuestSitesTip>Quests at enemy sites, such as siege camps, only use factions in range. A quest with no eligible faction isn't offered.</EAT_FilterQuestSitesTip>
   <EAT_ReplaceQuestRaiders>Replace quest raiders from outside the range</EAT_ReplaceQuestRaiders>

@@ -3,21 +3,6 @@ using Verse;
 
 namespace EraAppropriateThreats
 {
-    public enum TechMethod
-    {
-        ResearchPercent,
-        HighestResearched,
-        ColonyLevel,
-        FixedRange
-    }
-
-    public enum FactionRule
-    {
-        ByTech,
-        Always,
-        Never
-    }
-
     public class ThreatSettings : ModSettings
     {
         public TechMethod method = TechMethod.ResearchPercent;

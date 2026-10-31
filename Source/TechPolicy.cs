@@ -11,15 +11,17 @@ namespace EraAppropriateThreats
         // One in-game hour, so level changes from any source are picked up without a patch per source
         private const int RefreshTicks = 2500;
 
-        private static Game? cachedGame;
+        private static System.WeakReference<Game>? cachedGame;
         private static int cachedTick;
         private static TechLevel cachedLevel;
         private static Dictionary<TechLevel, List<ResearchProjectDef>>? projectsByLevel;
         private static Dictionary<string, ThreatSourceDef>? threatSources;
+        private static readonly Dictionary<IncidentDef, (bool limited, FactionDef? faction, TechLevel level)> incidentRules
+            = new Dictionary<IncidentDef, (bool, FactionDef?, TechLevel)>();
 
         private static ThreatSettings Settings => ThreatsMod.Settings;
 
-        public static bool InGame => Current.Game != null && Faction.OfPlayerSilentFail != null;
+        public static bool InGame => Current.ProgramState == ProgramState.Playing && Faction.OfPlayerSilentFail != null;
 
         public static TechLevel ColonyLevel
         {
@@ -27,9 +29,10 @@ namespace EraAppropriateThreats
             {
                 Game game = Current.Game;
                 int ticks = Find.TickManager.TicksGame;
-                if (game != cachedGame || ticks < cachedTick || ticks - cachedTick >= RefreshTicks)
+                if (cachedGame == null || !cachedGame.TryGetTarget(out Game? previous) || previous != game
+                    || ticks < cachedTick || ticks - cachedTick >= RefreshTicks)
                 {
-                    cachedGame = game;
+                    cachedGame = new System.WeakReference<Game>(game);
                     cachedTick = ticks;
                     cachedLevel = CalculateLevel();
                 }
@@ -61,7 +64,7 @@ namespace EraAppropriateThreats
         }
 
         public static FactionRule DefaultRule(FactionDef def)
-            => def == FactionDefOf.Empire || def == FactionDefOf.Insect ? FactionRule.Always : FactionRule.ByTech;
+            => def == FactionDefOf.Insect ? FactionRule.Always : FactionRule.ByTech;
 
         public static FactionRule RuleFor(FactionDef def)
             => Settings.factionRules.TryGetValue(def.defName, out FactionRule rule) ? rule : DefaultRule(def);
@@ -77,7 +80,9 @@ namespace EraAppropriateThreats
             if (level == TechLevel.Undefined) return true;
             if (Settings.method == TechMethod.FixedRange)
                 return (int)level >= Settings.fixedMin && (int)level <= Settings.fixedMax;
-            int difference = (int)level - (int)ColonyLevel;
+            TechLevel colony = ColonyLevel;
+            if (colony == TechLevel.Undefined) return true;
+            int difference = (int)level - (int)colony;
             return difference > 0
                 ? Settings.levelsAhead < 0 || difference <= Settings.levelsAhead
                 : Settings.levelsBehind < 0 || -difference <= Settings.levelsBehind;
@@ -124,19 +129,27 @@ namespace EraAppropriateThreats
 
         public static bool IncidentAllowed(IncidentDef incident)
         {
+            if (!incidentRules.TryGetValue(incident, out (bool limited, FactionDef? faction, TechLevel level) rule))
+            {
+                rule = ResolveIncidentRule(incident);
+                incidentRules[incident] = rule;
+            }
+            if (!rule.limited) return true;
+            if (rule.level == TechLevel.Undefined) return rule.faction == null || Eligible(rule.faction);
+            return (rule.faction == null || RuleFor(rule.faction) != FactionRule.Never) && LevelInRange(rule.level);
+        }
+
+        private static (bool limited, FactionDef? faction, TechLevel level) ResolveIncidentRule(IncidentDef incident)
+        {
             if (threatSources == null)
             {
                 threatSources = new Dictionary<string, ThreatSourceDef>();
                 foreach (ThreatSourceDef def in DefDatabase<ThreatSourceDef>.AllDefsListForReading) threatSources[def.incident] = def;
             }
             if (threatSources.TryGetValue(incident.defName, out ThreatSourceDef? source))
-            {
-                FactionDef? faction = DefDatabase<FactionDef>.GetNamedSilentFail(source.faction);
-                if (source.techLevel == TechLevel.Undefined) return faction == null || Eligible(faction);
-                return (faction == null || RuleFor(faction) != FactionRule.Never) && LevelInRange(source.techLevel);
-            }
+                return (true, DefDatabase<FactionDef>.GetNamedSilentFail(source.faction), source.techLevel);
             FactionDef? owner = IncidentOwner(incident);
-            return owner == null || Eligible(owner);
+            return (owner != null, owner, TechLevel.Undefined);
         }
 
         // Threats with no faction behind them follow the faction they belong to
