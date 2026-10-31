@@ -21,11 +21,11 @@
   <incompatibleWith>
     <li>dame.ignorance</li>
   </incompatibleWith>
-  <description>Keeps the threats your colony faces in step with its technology.
+  <description>Keeps the threats your colony faces in step with its technology. A spiritual successor to Ignorance Is Bliss, written from scratch.
 
 Your colony's tech level follows your research. Raids, mech clusters, infestations and hostile quest sites only come from factions within the range you choose. Raids that would have come from outside the range are given to a faction inside it, so you face just as many.
 
 Every faction can be set to come by tech level, always or never, including factions added by other mods. Empire and insects always come by default.
 
-Safe to add to or remove from an existing save.</description>
+Not compatible with Ignorance Is Bliss. Safe to add to or remove from an existing save.</description>
 </ModMetaData>

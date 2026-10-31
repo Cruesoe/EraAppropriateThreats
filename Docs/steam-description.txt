@@ -1,0 +1,33 @@
+[b]Keeps raids and other threats in step with your colony's technology, so a tribal village isn't wiped out by space pirates.[/b]
+
+Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. It's a new mod written from scratch, with the same idea at its heart. All the feedback and comments on Ignorance Is Bliss were read and considered in designing it.
+
+[h2]Features[/h2]
+[list]
+[*][b]Follows your progress:[/b] Your colony's tech level rises with your research and never drops below the level you started at.
+[*][b]Raids in range:[/b] A raid that would come from a faction outside your range is given to a faction inside it, so you still face your share of raids.
+[*][b]Your choice per faction:[/b] Every faction, including those added by other mods, can be set to come by tech level, always or never.
+[*][b]Mech clusters and infestations:[/b] Mech clusters, crashed ship parts and infestations follow the rules you set for mechanoids and insects.
+[*][b]Quest sites:[/b] Hostile quest sites, including siege camps from VFE - Medieval 2, only use factions in your range.
+[*][b]Modded events:[/b] Pillage raids from VFE - Medieval 2, protection fee demands from VFE - Settlers, the big infestations from VFE - Insectoids 2, the Black Hive from Alpha Animals and psychic storms from VRE - Archon all wait until they're in your range.
+[*][b]Modded raids:[/b] Rim War's warbands, Winston Waves' waves and [SR]Raid Extension's hostile groups only come from factions in your range.
+[*][b]Hunting parties:[/b] With traders and visitors limited, hunting parties from Vanilla Events Expanded are limited too.
+[/list]
+
+[h2]Settings[/h2]
+[list]
+[*][b]Tech level:[/b] Choose the share of each level's research you must finish (50% by default), your highest research, your faction's own level, or a fixed range.
+[*][b]Range:[/b] Choose how many levels above and below yours can come. By default that's one above and any number below.
+[*][b]No faction in range:[/b] The closest faction comes by default, or you can skip the raid instead.
+[*][b]Occasional surprises:[/b] Give each raid a chance to ignore the limit. This is 0% by default.
+[*][b]Quest raiders:[/b] Replace quest raiders from outside your range. This is off by default, and the quest text still names the original faction.
+[*][b]Traders and visitors:[/b] Limit trade caravans and visitors in the same way. This is off by default.
+[/list]
+
+[h2]Compatibility[/h2]
+Not compatible with Ignorance Is Bliss because they control the same system, so use one or the other.
+Other mods' events that pick their own faction aren't limited unless listed above.
+Safe to add to or remove from an existing save.
+
+[h2]Credits[/h2]
+Thanks to [b]Dametri[/b] for creating Ignorance Is Bliss and [b]GwinnBleidd[/b] for keeping it going for so long. This mod shares no code with theirs.
