@@ -5,8 +5,8 @@ Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. I
 [h2]Features[/h2]
 [list]
 [*][b]Follows your progress:[/b] Your colony's tech level rises with your research and never drops below the level you started at.
-[*][b]Raids in range:[/b] A raid that would come from a faction outside your range is given to a faction inside it, so you still face your share of raids.
-[*][b]Your choice per faction:[/b] Every faction, including those added by other mods, can be set to come by tech level, always or never.
+[*][b]Raids in range:[/b] A raid that would come from a faction outside your range is given to a faction inside it.
+[*][b]Your choice per faction:[/b] Every faction, including those added by other mods, can be set to come by tech level, always or never. Insects always come by default, and every other faction comes by tech level.
 [*][b]Mech clusters and infestations:[/b] Mech clusters, crashed ship parts and infestations follow the rules you set for mechanoids and insects.
 [*][b]Quest sites:[/b] Hostile quest sites, including siege camps from VFE - Medieval 2, only use factions in your range.
 [*][b]Modded events:[/b] Pillage raids from VFE - Medieval 2, protection fee demands from VFE - Settlers, the big infestations from VFE - Insectoids 2, the Black Hive from Alpha Animals and psychic storms from VRE - Archon all wait until they're in your range.
@@ -18,6 +18,7 @@ Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. I
 [list]
 [*][b]Tech level:[/b] Choose the share of each level's research you must finish (50% by default), your highest research, your faction's own level, or a fixed range.
 [*][b]Range:[/b] Choose how many levels above and below yours can come. By default that's one above and any number below.
+[*][b]What's limited:[/b] Turn the limits on raids, on mech clusters, crashed ship parts and infestations, and on hostile quest sites on or off separately. All three are on by default.
 [*][b]No faction in range:[/b] The closest faction comes by default, or you can skip the raid instead.
 [*][b]Occasional surprises:[/b] Give each raid a chance to ignore the limit. This is 0% by default.
 [*][b]Quest raiders:[/b] Replace quest raiders from outside your range. This is off by default, and the quest text still names the original faction.

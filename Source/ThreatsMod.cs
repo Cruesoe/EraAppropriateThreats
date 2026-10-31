@@ -33,10 +33,13 @@ namespace EraAppropriateThreats
         {
             Rect view = new Rect(0f, 0f, inRect.width - 20f, viewHeight);
             Widgets.BeginScrollView(inRect, ref scroll, view);
-            Listing_Standard listing = new Listing_Standard();
+            Listing_Standard listing = new Listing_Standard { maxOneColumn = true };
             listing.Begin(view);
             DrawStatus(listing);
+            TechMethod method = Settings.method;
+            float percent = Settings.researchPercent;
             DrawMethod(listing);
+            if (Settings.method != method || Settings.researchPercent != percent) TechPolicy.Invalidate();
             listing.GapLine();
             DrawFilters(listing);
             listing.GapLine();
@@ -54,7 +57,6 @@ namespace EraAppropriateThreats
                 listing.GapLine();
                 return;
             }
-            TechPolicy.Invalidate();
             if (Settings.method != TechMethod.FixedRange)
                 listing.Label("EAT_ColonyLevel".Translate(TechPolicy.ColonyLevel.ToStringHuman()));
             IEnumerable<string> hostile = Find.FactionManager.AllFactions
@@ -72,8 +74,8 @@ namespace EraAppropriateThreats
             Method(listing, TechMethod.ResearchPercent, "EAT_MethodPercent", "EAT_MethodPercentTip");
             if (Settings.method == TechMethod.ResearchPercent)
             {
-                Settings.researchPercent = Mathf.Round(listing.Slider(Settings.researchPercent, 0.05f, 1f) * 20f) / 20f;
                 listing.Label("EAT_Percent".Translate(Settings.researchPercent.ToStringPercent()));
+                Settings.researchPercent = Mathf.Round(listing.Slider(Settings.researchPercent, 0.05f, 1f) * 20f) / 20f;
             }
             Method(listing, TechMethod.HighestResearched, "EAT_MethodHighest", "EAT_MethodHighestTip");
             Method(listing, TechMethod.ColonyLevel, "EAT_MethodColony", "EAT_MethodColonyTip");
@@ -104,13 +106,32 @@ namespace EraAppropriateThreats
         private static void DrawFilters(Listing_Standard listing)
         {
             listing.CheckboxLabeled("EAT_FilterRaids".Translate(), ref Settings.filterRaids, "EAT_FilterRaidsTip".Translate());
-            listing.CheckboxLabeled("EAT_KeepRaids".Translate(), ref Settings.keepRaids, "EAT_KeepRaidsTip".Translate());
-            listing.Label("EAT_OutOfRangeChance".Translate(Settings.outOfRangeChance.ToStringPercent()), tooltip: "EAT_OutOfRangeChanceTip".Translate());
-            Settings.outOfRangeChance = Mathf.Round(listing.Slider(Settings.outOfRangeChance, 0f, 1f) * 20f) / 20f;
+            RaidOption(listing, "EAT_KeepRaids", "EAT_KeepRaidsTip", ref Settings.keepRaids);
+            DrawOutOfRangeChance(listing);
             listing.CheckboxLabeled("EAT_FilterIncidents".Translate(), ref Settings.filterIncidents, "EAT_FilterIncidentsTip".Translate());
             listing.CheckboxLabeled("EAT_FilterQuestSites".Translate(), ref Settings.filterQuestSites, "EAT_FilterQuestSitesTip".Translate());
-            listing.CheckboxLabeled("EAT_ReplaceQuestRaiders".Translate(), ref Settings.replaceQuestRaiders, "EAT_ReplaceQuestRaidersTip".Translate());
+            RaidOption(listing, "EAT_ReplaceQuestRaiders", "EAT_ReplaceQuestRaidersTip", ref Settings.replaceQuestRaiders);
             listing.CheckboxLabeled("EAT_FilterVisitors".Translate(), ref Settings.filterVisitors, "EAT_FilterVisitorsTip".Translate());
+        }
+
+        // Options that only work with Limit raids on are greyed out without it
+        private static void RaidOption(Listing_Standard listing, string label, string tip, ref bool value)
+        {
+            Rect row = listing.GetRect(Text.LineHeight);
+            listing.Gap(listing.verticalSpacing);
+            Widgets.CheckboxLabeled(row, label.Translate(), ref value, !Settings.filterRaids);
+            TooltipHandler.TipRegion(row, (Settings.filterRaids ? tip : "EAT_RequiresLimitRaids").Translate());
+        }
+
+        private static void DrawOutOfRangeChance(Listing_Standard listing)
+        {
+            string tip = (Settings.filterRaids ? "EAT_OutOfRangeChanceTip" : "EAT_RequiresLimitRaids").Translate();
+            Color color = GUI.color;
+            if (!Settings.filterRaids) GUI.color = Color.gray;
+            listing.Label("EAT_OutOfRangeChance".Translate(Settings.outOfRangeChance.ToStringPercent()), tooltip: tip);
+            float chance = Mathf.Round(listing.Slider(Settings.outOfRangeChance, 0f, 1f) * 20f) / 20f;
+            GUI.color = color;
+            if (Settings.filterRaids) Settings.outOfRangeChance = chance;
         }
 
         private static void DrawFactions(Listing_Standard listing)
