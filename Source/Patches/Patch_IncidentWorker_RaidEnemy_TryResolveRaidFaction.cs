@@ -25,6 +25,8 @@ namespace EraAppropriateThreats
             }
         }
 
+        // Runs before World Domination's own gate on this method, which has the last word on storyteller raids
+        [HarmonyPriority(Priority.High)]
         public static void Postfix(IncidentWorker_RaidEnemy __instance, IncidentParms parms, (bool filter, Faction? questFaction) __state, ref bool __result)
         {
             if (!__state.filter || __result && TechPolicy.Eligible(parms.faction)) return;
