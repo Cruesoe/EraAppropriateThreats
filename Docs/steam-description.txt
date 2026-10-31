@@ -6,10 +6,11 @@ Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. I
 [list]
 [*][b]Follows your progress:[/b] Your colony's tech level rises with your research and never drops below the level you started at.
 [*][b]Raids in range:[/b] A raid that would come from a faction outside your range is given to a faction inside it.
+[*][b]Caravans:[/b] Ambushes and demands on your caravans only come from factions in your range.
 [*][b]Your choice per faction:[/b] Every faction, including those added by other mods, can be set to come by tech level, always or never. Insects always come by default, and every other faction comes by tech level.
 [*][b]Mech clusters and infestations:[/b] Mech clusters, crashed ship parts and infestations follow the rules you set for mechanoids and insects.
 [*][b]Quest sites:[/b] Hostile quest sites, including siege camps from VFE - Medieval 2, only use factions in your range.
-[*][b]Modded events:[/b] Pillage raids from VFE - Medieval 2, protection fee demands from VFE - Settlers, the big infestations from VFE - Insectoids 2, the Black Hive from Alpha Animals and psychic storms from VRE - Archon all wait until they're in your range.
+[*][b]Modded events:[/b] Pillage raids from VFE - Medieval 2, protection fee demands from VFE - Settlers, the big infestations from VFE - Insectoids 2, the Black Hive from Alpha Animals, psychic storms from VRE - Archon, psychic emitters from Sparkling Worlds, tunnel guerrillas from NewRatkinPlus and the N-4 chambers, N-4 wander-ins and stalkers from [RH2] Faction: V.O.I.D. all wait until they're in your range.
 [*][b]Modded raids:[/b] World Domination 2.0's raids on your colonies and outposts, Rim War's warbands, Winston Waves' waves and [SR]Raid Extension's hostile groups only come from factions in your range.
 [*][b]Hunting parties:[/b] With traders and visitors limited, hunting parties from Vanilla Events Expanded are limited too.
 [/list]
@@ -29,6 +30,16 @@ Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. I
 Not compatible with Ignorance Is Bliss because they control the same system, so use one or the other.
 Other mods' events that pick their own faction aren't limited unless listed above.
 Safe to add to or remove from an existing save.
+
+[h2]FAQ[/h2]
+[b]Can I add it to an existing save?[/b]
+Yes. It takes effect as soon as you load the save.
+
+[b]Can I remove it mid-save?[/b]
+Yes. It adds nothing to your save, so threats simply go back to normal.
+
+[b]Does it work with Ignorance Is Bliss?[/b]
+No. Use one or the other, as they control the same system.
 
 [h2]Credits[/h2]
 Thanks to [b]Dametri[/b] for creating Ignorance Is Bliss and [b]GwinnBleidd[/b] for keeping it going for so long. This mod shares no code with theirs.

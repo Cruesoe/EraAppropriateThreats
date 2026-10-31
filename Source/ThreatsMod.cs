@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
@@ -11,14 +12,36 @@ namespace EraAppropriateThreats
     {
         public static ThreatSettings Settings = null!;
 
-        private static Vector2 scroll;
-        private static float viewHeight = 1200f;
+        private static Vector2 generalScroll;
+        private static Vector2 factionsScroll;
+        private static float generalHeight = 1200f;
+        private static float factionsHeight = 1200f;
+        private static bool showFactions;
+        private static List<TabRecord>? tabs;
         private static List<FactionDef>? factionDefs;
 
         public ThreatsMod(ModContentPack content) : base(content)
         {
             Settings = GetSettings<ThreatSettings>();
-            new Harmony("cruesoe.eraappropriatethreats").PatchAll();
+            ApplyPatches();
+        }
+
+        // Each class is patched on its own, so a changed optional mod only loses its own patch
+        private static void ApplyPatches()
+        {
+            Harmony harmony = new Harmony("cruesoe.eraappropriatethreats");
+            foreach (Type type in AccessTools.GetTypesFromAssembly(typeof(ThreatsMod).Assembly))
+            {
+                if (!type.IsDefined(typeof(HarmonyPatch), false)) continue;
+                try
+                {
+                    harmony.CreateClassProcessor(type).Patch();
+                }
+                catch (Exception e)
+                {
+                    Log.Warning("[Era Appropriate Threats] Could not apply " + type.Name + ": " + e.Message);
+                }
+            }
         }
 
         public override string SettingsCategory() => "Era Appropriate Threats";
@@ -31,10 +54,34 @@ namespace EraAppropriateThreats
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Rect view = new Rect(0f, 0f, inRect.width - 20f, viewHeight);
-            Widgets.BeginScrollView(inRect, ref scroll, view);
+            Rect body = inRect;
+            body.yMin += TabDrawer.TabHeight;
+            tabs ??= new List<TabRecord>
+            {
+                new TabRecord("EAT_TabGeneral".Translate(), () => showFactions = false, () => !showFactions),
+                new TabRecord("EAT_TabFactions".Translate(), () => showFactions = true, () => showFactions)
+            };
+            Widgets.DrawMenuSection(body);
+            TabDrawer.DrawTabs(body, tabs);
+            body = body.ContractedBy(10f);
+            if (showFactions) DrawScrolled(body, ref factionsScroll, ref factionsHeight, DrawFactions);
+            else DrawScrolled(body, ref generalScroll, ref generalHeight, DrawGeneral);
+        }
+
+        private static void DrawScrolled(Rect rect, ref Vector2 scroll, ref float height, Action<Listing_Standard> draw)
+        {
+            Rect view = new Rect(0f, 0f, rect.width - 20f, height);
+            Widgets.BeginScrollView(rect, ref scroll, view);
             Listing_Standard listing = new Listing_Standard { maxOneColumn = true };
             listing.Begin(view);
+            draw(listing);
+            height = listing.CurHeight + 12f;
+            listing.End();
+            Widgets.EndScrollView();
+        }
+
+        private static void DrawGeneral(Listing_Standard listing)
+        {
             DrawStatus(listing);
             TechMethod method = Settings.method;
             float percent = Settings.researchPercent;
@@ -42,11 +89,6 @@ namespace EraAppropriateThreats
             if (Settings.method != method || Settings.researchPercent != percent) TechPolicy.Invalidate();
             listing.GapLine();
             DrawFilters(listing);
-            listing.GapLine();
-            DrawFactions(listing);
-            viewHeight = listing.CurHeight + 12f;
-            listing.End();
-            Widgets.EndScrollView();
         }
 
         private static void DrawStatus(Listing_Standard listing)
@@ -60,7 +102,7 @@ namespace EraAppropriateThreats
             if (Settings.method != TechMethod.FixedRange)
                 listing.Label("EAT_ColonyLevel".Translate(TechPolicy.ColonyLevel.ToStringHuman()));
             IEnumerable<string> hostile = Find.FactionManager.AllFactions
-                .Where(f => !f.IsPlayer && !f.defeated && f.HostileTo(Faction.OfPlayer) && CanRaid(f.def) && TechPolicy.Eligible(f))
+                .Where(f => !f.IsPlayer && !f.defeated && !f.deactivated && !f.temporary && f.HostileTo(Faction.OfPlayer) && CanRaid(f.def) && TechPolicy.Eligible(f))
                 .Select(f => f.Name);
             string names = hostile.ToCommaList();
             listing.Label("EAT_EligibleRaiders".Translate(names.NullOrEmpty() ? "EAT_None".Translate().ToString() : names));

@@ -63,4 +63,57 @@
     <faction>Insect</faction>
     <techLevel>Industrial</techLevel>
   </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_RatkinTunnelGuerrilla</defName>
+    <incident>RatkinTunnel_Guerrilla</incident>
+    <faction>Rakinia</faction>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_SparklingPsychicEmitter</defName>
+    <incident>PsychicEmitterActivationSW</incident>
+    <techLevel>Spacer</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VOIDDefoliatorCrash</defName>
+    <incident>VOID_DefoliatorShipPartCrash</incident>
+    <faction>RH_VOID</faction>
+    <techLevel>Medieval</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VOIDVolatileLeaperCrash</defName>
+    <incident>VOID_VolatileLeaper_ShipPartCrash</incident>
+    <faction>RH_VOID</faction>
+    <techLevel>Medieval</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VOIDBlackTitanCrash</defName>
+    <incident>VOID_BlackTitan_ShipPartCrash</incident>
+    <faction>RH_VOID</faction>
+    <techLevel>Medieval</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VOIDDevilHoundCrash</defName>
+    <incident>VOID_DevilHound_ShipPartCrash</incident>
+    <faction>RH_VOID</faction>
+    <techLevel>Medieval</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VOIDN4ManhunterRedZone</defName>
+    <incident>VOID_N4Manhunter_RedZone</incident>
+    <faction>RH_VOID</faction>
+    <techLevel>Medieval</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VOIDN4ManhunterDeathRow</defName>
+    <incident>VOID_N4Manhunter_DeathRow</incident>
+    <faction>RH_VOID</faction>
+    <techLevel>Medieval</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VOIDStalker</defName>
+    <incident>Void_Stalker</incident>
+    <faction>RH_VOID</faction>
+    <techLevel>Ultra</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
 </Defs>

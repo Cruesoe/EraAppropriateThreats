@@ -1,10 +1,11 @@
 using System.Reflection;
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 
 namespace EraAppropriateThreats
 {
-    // Every army reaching a player colony raids through here, including those launched by routes that skip FinalizeRaid
+    // Every army reaching a settlement with a loaded map raids through here, including those launched by routes that skip FinalizeRaid
     [HarmonyPatch]
     public static class Patch_WorldDomination_ExecuteColonyRaid
     {
@@ -15,9 +16,9 @@ namespace EraAppropriateThreats
 
         public static MethodBase? TargetMethod() => Target;
 
-        public static bool Prefix(Faction attackerFaction, ref bool __result)
+        public static bool Prefix(Faction attackerFaction, Settlement target, ref bool __result)
         {
-            if (attackerFaction == null || !WorldDominationCompat.Active || TechPolicy.Eligible(attackerFaction)) return true;
+            if (attackerFaction == null || !WorldDominationCompat.Active || target?.Faction != Faction.OfPlayer || TechPolicy.Eligible(attackerFaction)) return true;
             __result = false;
             return false;
         }
