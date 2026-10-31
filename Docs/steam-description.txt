@@ -1,6 +1,6 @@
 [b]Keeps raids and other threats in step with your colony's technology, so a tribal village isn't wiped out by space pirates.[/b]
 
-Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. It's a new mod written from scratch, with the same idea at its heart and fixes for what players have asked for over the years.
+Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. It's a new mod written from scratch, with the same idea at its heart. All the feedback and comments on Ignorance Is Bliss were read and considered in designing it.
 
 [h2]Features[/h2]
 [list]
