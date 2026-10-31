@@ -15,6 +15,7 @@ namespace EraAppropriateThreats
         private static int cachedTick;
         private static TechLevel cachedLevel;
         private static Dictionary<TechLevel, List<ResearchProjectDef>>? projectsByLevel;
+        private static Dictionary<string, ThreatSourceDef>? threatSources;
 
         private static ThreatSettings Settings => ThreatsMod.Settings;
 
@@ -121,8 +122,24 @@ namespace EraAppropriateThreats
                 f => allowed(f) && worker.FactionCanBeGroupSource(f: f, parms: parms, desperate: desperate),
                 allowNonHostileToPlayer: true, allowHidden: true, allowDefeated: true);
 
+        public static bool IncidentAllowed(IncidentDef incident)
+        {
+            if (threatSources == null)
+            {
+                threatSources = new Dictionary<string, ThreatSourceDef>();
+                foreach (ThreatSourceDef def in DefDatabase<ThreatSourceDef>.AllDefsListForReading) threatSources[def.incident] = def;
+            }
+            if (threatSources.TryGetValue(incident.defName, out ThreatSourceDef? source))
+            {
+                FactionDef? faction = DefDatabase<FactionDef>.GetNamedSilentFail(source.faction);
+                return faction != null ? Eligible(faction) : LevelInRange(source.techLevel);
+            }
+            FactionDef? owner = IncidentOwner(incident);
+            return owner == null || Eligible(owner);
+        }
+
         // Threats with no faction behind them follow the faction they belong to
-        public static FactionDef? IncidentSource(IncidentDef incident)
+        private static FactionDef? IncidentOwner(IncidentDef incident)
         {
             Type worker = incident.workerClass;
             if (worker == null) return null;

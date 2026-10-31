@@ -13,11 +13,7 @@ namespace EraAppropriateThreats
         public static void Postfix(ref IEnumerable<IncidentDef> __result)
         {
             if (!ThreatsMod.Settings.filterIncidents || !TechPolicy.InGame) return;
-            __result = __result.Where(incident =>
-            {
-                FactionDef? source = TechPolicy.IncidentSource(incident);
-                return source == null || TechPolicy.Eligible(source);
-            });
+            __result = __result.Where(TechPolicy.IncidentAllowed);
         }
     }
 }

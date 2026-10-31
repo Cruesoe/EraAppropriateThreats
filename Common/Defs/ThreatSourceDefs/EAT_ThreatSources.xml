@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Incident names are plain strings, so entries for mods that aren't loaded do nothing -->
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFEM2PillageRaid</defName>
+    <incident>VFEM_PillageRaid</incident>
+    <techLevel>Medieval</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFESProtectionFee</defName>
+    <incident>ProtectionFee</incident>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+  <EraAppropriateThreats.ThreatSourceDef>
+    <defName>EAT_VFESProtectionFeeLTS</defName>
+    <incident>ProtectionFeeLTS</incident>
+    <techLevel>Industrial</techLevel>
+  </EraAppropriateThreats.ThreatSourceDef>
+</Defs>
