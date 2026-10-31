@@ -31,5 +31,15 @@ Not compatible with Ignorance Is Bliss because they control the same system, so 
 Other mods' events that pick their own faction aren't limited unless listed above.
 Safe to add to or remove from an existing save.
 
+[h2]FAQ[/h2]
+[b]Can I add it to an existing save?[/b]
+Yes. It takes effect as soon as you load the save.
+
+[b]Can I remove it mid-save?[/b]
+Yes. It adds nothing to your save, so threats simply go back to normal.
+
+[b]Does it work with Ignorance Is Bliss?[/b]
+No. Use one or the other, as they control the same system.
+
 [h2]Credits[/h2]
 Thanks to [b]Dametri[/b] for creating Ignorance Is Bliss and [b]GwinnBleidd[/b] for keeping it going for so long. This mod shares no code with theirs.
