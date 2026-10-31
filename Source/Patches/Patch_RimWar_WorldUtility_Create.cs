@@ -8,7 +8,7 @@ using RimWorld.Planet;
 
 namespace EraAppropriateThreats
 {
-    // Rim War sends raids as units crossing the world map; out-of-range settlements don't send them at the player
+    // Rim War sends raids as units crossing the world map; out-of-range hostile settlements don't send them at the player
     [HarmonyPatch]
     public static class Patch_RimWar_WorldUtility_Create
     {
@@ -25,7 +25,8 @@ namespace EraAppropriateThreats
         public static bool Prefix(Settlement parentSettlement, WorldObject destination)
         {
             if (!ThreatsMod.Settings.filterRaids || !TechPolicy.InGame || destination?.Faction != Faction.OfPlayer) return true;
-            return parentSettlement?.Faction == null || TechPolicy.Eligible(parentSettlement.Faction);
+            Faction? sender = parentSettlement?.Faction;
+            return sender == null || !sender.HostileTo(Faction.OfPlayer) || TechPolicy.Eligible(sender);
         }
     }
 }

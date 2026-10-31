@@ -23,7 +23,7 @@
   <EAT_Any>any</EAT_Any>
 
   <EAT_FilterRaids>Limit raids</EAT_FilterRaids>
-  <EAT_FilterRaidsTip>Random raids come from a faction in range. This also covers World Domination 2.0, Rim War, Winston Waves and [SR]Raid Extension.</EAT_FilterRaidsTip>
+  <EAT_FilterRaidsTip>Random raids come from a faction in range. This also covers caravan ambushes and demands, World Domination 2.0, Rim War, Winston Waves and [SR]Raid Extension.</EAT_FilterRaidsTip>
   <EAT_RequiresLimitRaids>Requires Limit raids.</EAT_RequiresLimitRaids>
   <EAT_KeepRaids>Keep raids when no faction is in range</EAT_KeepRaids>
   <EAT_KeepRaidsTip>When no faction in range can raid you, the closest faction comes instead. Turn this off to skip the raid. Factions set to Never are never used.</EAT_KeepRaidsTip>

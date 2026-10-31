@@ -14,7 +14,7 @@ namespace EraAppropriateThreats
             if (!settings.filterRaids || !TechPolicy.InGame) return;
             if (parms.faction == null)
             {
-                __state.filter = !parms.forced;
+                __state.filter = true;
             }
             // Quest raids name their faction; clearing it lets the game pick one, which the postfix then checks
             else if (settings.replaceQuestRaiders && parms.pawnKind == null && (parms.quest != null || !string.IsNullOrEmpty(parms.questTag))
@@ -31,14 +31,15 @@ namespace EraAppropriateThreats
         {
             if (!__state.filter || __result && TechPolicy.Eligible(parms.faction)) return;
             if (__result && TechPolicy.RuleFor(parms.faction.def) != FactionRule.Never && Rand.Chance(ThreatsMod.Settings.outOfRangeChance)) return;
+            Faction? picked = parms.faction;
             __result = TechPolicy.TryChooseRaidFaction(__instance, parms, out Faction? faction);
             parms.faction = faction;
-            // A quest can be waiting on this raid, so it keeps its own faction if nothing else can come
-            if (!__result && __state.questFaction != null)
-            {
-                parms.faction = __state.questFaction;
-                __result = true;
-            }
+            if (__result) return;
+            // Quests and forced raids can be waiting on this raid, so they keep their own faction or the game's pick if nothing else can come
+            Faction? fallback = __state.questFaction ?? (parms.forced ? picked : null);
+            if (fallback == null) return;
+            parms.faction = fallback;
+            __result = true;
         }
     }
 }

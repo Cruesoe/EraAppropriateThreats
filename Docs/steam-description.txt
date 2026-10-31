@@ -6,6 +6,7 @@ Era Appropriate Threats is a spiritual successor to [b]Ignorance Is Bliss[/b]. I
 [list]
 [*][b]Follows your progress:[/b] Your colony's tech level rises with your research and never drops below the level you started at.
 [*][b]Raids in range:[/b] A raid that would come from a faction outside your range is given to a faction inside it.
+[*][b]Caravans:[/b] Ambushes and demands on your caravans only come from factions in your range.
 [*][b]Your choice per faction:[/b] Every faction, including those added by other mods, can be set to come by tech level, always or never. Insects always come by default, and every other faction comes by tech level.
 [*][b]Mech clusters and infestations:[/b] Mech clusters, crashed ship parts and infestations follow the rules you set for mechanoids and insects.
 [*][b]Quest sites:[/b] Hostile quest sites, including siege camps from VFE - Medieval 2, only use factions in your range.
