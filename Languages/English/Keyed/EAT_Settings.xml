@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <EAT_NotInGame>Load a game to see your colony's tech level and the factions that can raid it.</EAT_NotInGame>
+  <EAT_ColonyLevel>Your colony's tech level: {0}</EAT_ColonyLevel>
+  <EAT_EligibleRaiders>Hostile factions that can raid you: {0}</EAT_EligibleRaiders>
+  <EAT_None>none</EAT_None>
+  <EAT_TemperatureNote>Factions can still stay away when the map is too hot or too cold for them.</EAT_TemperatureNote>
+
+  <EAT_MethodHeader>Your colony's tech level comes from:</EAT_MethodHeader>
+  <EAT_MethodPercent>Share of each level's research finished</EAT_MethodPercent>
+  <EAT_MethodPercentTip>You reach a tech level once you have finished this share of its research. You never drop below the level you started at.</EAT_MethodPercentTip>
+  <EAT_Percent>Research needed: {0}</EAT_Percent>
+  <EAT_MethodHighest>Highest research finished</EAT_MethodHighest>
+  <EAT_MethodHighestTip>You reach a tech level as soon as you finish one project from it.</EAT_MethodHighestTip>
+  <EAT_MethodColony>Your faction's own tech level</EAT_MethodColony>
+  <EAT_MethodColonyTip>Ignores research. Useful with mods that raise your faction's tech level themselves.</EAT_MethodColonyTip>
+  <EAT_MethodFixed>Fixed range</EAT_MethodFixed>
+  <EAT_MethodFixedTip>Choose the allowed tech levels directly. They never change during the game.</EAT_MethodFixedTip>
+  <EAT_FixedMin>Lowest allowed level: {0}</EAT_FixedMin>
+  <EAT_FixedMax>Highest allowed level: {0}</EAT_FixedMax>
+  <EAT_LevelsAhead>Levels above yours allowed: {0}</EAT_LevelsAhead>
+  <EAT_LevelsBehind>Levels below yours allowed: {0}</EAT_LevelsBehind>
+  <EAT_Any>any</EAT_Any>
+
+  <EAT_FilterRaids>Limit raids</EAT_FilterRaids>
+  <EAT_FilterRaidsTip>Random raids come from a faction in range.</EAT_FilterRaidsTip>
+  <EAT_KeepRaids>Keep raids when no faction is in range</EAT_KeepRaids>
+  <EAT_KeepRaidsTip>When no faction in range can raid you, the closest faction comes instead. Turn this off to skip the raid. Factions set to Never are never used.</EAT_KeepRaidsTip>
+  <EAT_OutOfRangeChance>Chance a raid ignores the limit: {0}</EAT_OutOfRangeChance>
+  <EAT_OutOfRangeChanceTip>Lets the occasional raid come from outside the range. Factions set to Never are never used.</EAT_OutOfRangeChanceTip>
+  <EAT_FilterIncidents>Limit mech clusters, crashed ship parts and infestations</EAT_FilterIncidents>
+  <EAT_FilterIncidentsTip>These follow the rule for mechanoids or insects in the list below.</EAT_FilterIncidentsTip>
+  <EAT_FilterQuestSites>Limit hostile quest sites</EAT_FilterQuestSites>
+  <EAT_FilterQuestSitesTip>Quests at enemy sites, such as siege camps, only use factions in range. A quest with no eligible faction isn't offered.</EAT_FilterQuestSitesTip>
+  <EAT_ReplaceQuestRaiders>Replace quest raiders from outside the range</EAT_ReplaceQuestRaiders>
+  <EAT_ReplaceQuestRaidersTip>A faction in range arrives instead. The quest's text still names the original faction.</EAT_ReplaceQuestRaidersTip>
+  <EAT_FilterVisitors>Limit traders and visitors</EAT_FilterVisitors>
+  <EAT_FilterVisitorsTip>Random trade caravans and visitors also only come from factions in range.</EAT_FilterVisitorsTip>
+
+  <EAT_FactionsHeader>Each faction comes:</EAT_FactionsHeader>
+  <EAT_RuleByTech>By tech level</EAT_RuleByTech>
+  <EAT_RuleAlways>Always</EAT_RuleAlways>
+  <EAT_RuleNever>Never</EAT_RuleNever>
+  <EAT_ResetRules>Reset faction rules</EAT_ResetRules>
+</LanguageData>
